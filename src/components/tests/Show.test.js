@@ -12,12 +12,12 @@ const testShow = {
         {
             id: 0,
             name: 'Season 1',
-            episode: []        
+            episodes: []        
         },
         {
             id: 1,
             name: 'Season 2',
-            episode: []        
+            episodes: []        
         }, 
     ]
 }
@@ -28,7 +28,7 @@ test('renders without errors', ()=>{
 
 test('renders Loading component when prop show is null', () => {
     render(<Show show={null}/>)
-    const loading = screen.queryByTXTId('loading-container')
+    const loading = screen.queryByTestId('loading-container')
     expect(loading).toBeInTheDocument()
 });
 
@@ -48,6 +48,7 @@ test('handleSelect is called when an season is selected', () => {
     const select = screen.getByLabelText(/Select A Season/i)
     userEvent.selectOptions(select, ['1'])
 
+    // expect(handleSelect.mock.calls).toHaveLength(1)
     expect(handleSelect).toBeCalled()
 });
 
